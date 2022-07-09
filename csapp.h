@@ -91,11 +91,12 @@ void *Calloc(size_t nmemb, size_t size);
 void Free(void *ptr);
 
 /* Rio (Robust I/O) package */
-ssize_t rio_readn(int fd, void *usrbuf, size_t n);
-ssize_t rio_writen(int fd, const void *usrbuf, size_t n);
-void rio_readinitb(rio_t *rp, int fd);
-ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n);
-ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen);
+ssize_t rio_readn(int fd, void *usrbuf, size_t n); // n bytes and
+ssize_t rio_writen(int fd, const void *usrbuf,
+                   size_t n);          // write data back to client
+void rio_readinitb(rio_t *rp, int fd); // initized rio struct
+ssize_t rio_readnb(rio_t *rp, void *usrbuf, size_t n); // n bytes from server
+ssize_t rio_readlineb(rio_t *rp, void *usrbuf, size_t maxlen); // from client
 
 /* Reentrant protocol-independent client/server helpers */
 int open_clientfd(const char *hostname, const char *port);
